@@ -1,0 +1,165 @@
+{
+	"İzmir": [
+		{
+			"konum": "Bostanlı İskele",
+			"isim": "Varuna Gezgin",
+			"kategoriler": "-",
+			"priz": "Çoğu masada mevcut",
+			"wifi": "Mevcut",
+			"wifiHiz": "40 Mbps",
+			"gurultu": "5/10",
+			"calismaSaatleri": "09:00 - 01:00",
+			"instagram": "@varunagezgin"
+		},
+		{
+			"konum": "Narlıdere",
+			"isim": "Starbucks",
+			"kategoriler": "-",
+			"priz": "Çoğu masada mevcut",
+			"wifi": "Mevcut",
+			"wifiHiz": "30 Mbps",
+			"gurultu": "2/10",
+			"calismaSaatleri": "09:00 - 14:00",
+			"instagram": "@starbucks_tr"
+		},
+		{
+			"konum": "Narlıdere - DEU GSF Karşısı",
+			"isim": "Pablo Artisan Kafe",
+			"kategoriler": "-",
+			"priz": "Duvar kenarı masalarda",
+			"wifi": "Mevcut",
+			"wifiHiz": "50 Mbps",
+			"gurultu": "2/10",
+			"calismaSaatleri": "09:00 - 21:00",
+			"instagram": "@pabloartisancoffee"
+		},
+		{
+			"konum": "Kıbrıs Şehitleri - Sevinç Karşısı",
+			"isim": "Starbucks",
+			"kategoriler": "-",
+			"priz": "Çoğu masada mevcut",
+			"wifi": "Mevcut",
+			"wifiHiz": "10-25 Mbps",
+			"gurultu": "7/10",
+			"calismaSaatleri": "08:00 - 22:00",
+			"instagram": "@starbucks_tr"
+		}
+	],
+	"İstanbul": [
+		{
+			"konum": "Yeşilköy",
+			"isim": "Caffè Nero",
+			"kategoriler": "-",
+			"priz": "İçeride üst katta çoğunlukla",
+			"wifi": "Mevcut",
+			"wifiHiz": "30 Mbps",
+			"gurultu": "4/10",
+			"calismaSaatleri": "09:00 - 00:00",
+			"instagram": "@caffeneroturkiye"
+		},
+		{
+			"konum": "Beşiktaş",
+			"isim": "O Coffee",
+			"kategoriler": "-",
+			"priz": "Sadece mekanın içerisindeki masalarda",
+			"wifi": "Mevcut",
+			"wifiHiz": "-",
+			"gurultu": "6/10",
+			"calismaSaatleri": "10:00 - 01:00",
+			"instagram": "@ocoffeecompany"
+		},
+		{
+			"konum": "Beşiktaş",
+			"isim": "Baracca Cafe",
+			"kategoriler": "-",
+			"priz": "Çoğu masada mevcut",
+			"wifi": "Mevcut",
+			"wifiHiz": "-",
+			"gurultu": "3/10",
+			"calismaSaatleri": "08:30 - 00:30",
+			"instagram": "-"
+		},
+		{
+			"konum": "Nişantaşı",
+			"isim": "MOC Nişantaşı",
+			"kategoriler": "-",
+			"priz": "Çoğu masada mevcut",
+			"wifi": "Mevcut",
+			"wifiHiz": "-",
+			"gurultu": "6/10",
+			"calismaSaatleri": "07:30 - 23:30",
+			"instagram": "@moc_coffeeofficial"
+		},
+		{
+			"konum": "Galataport yanı",
+			"isim": "Astrolabe Coffee House",
+			"kategoriler": "-",
+			"priz": "Duvar Kenarı, orta büyük masa",
+			"wifi": "Mevcut",
+			"wifiHiz": "-",
+			"gurultu": "3/10",
+			"calismaSaatleri": "08:00 - 23:00",
+			"instagram": "@astrolabeturkey"
+		},
+		{
+			"konum": "Kadıköy, Moda Sahili",
+			"isim": "Moda İskelesi Kütüphanesi",
+			"kategoriler": "Manzara",
+			"priz": "Çoğu masada mevcut",
+			"wifi": "Mevcut",
+			"wifiHiz": "0-10 Mbps",
+			"gurultu": "3/10",
+			"calismaSaatleri": "09:00 - 22:00",
+			"instagram": "-",
+			"harita": "https://goo.gl/maps/FaCn4rzU51gGvjNv9"
+		},
+		{
+			"konum": "Suadiye",
+			"isim": "Espresso Park",
+			"kategoriler": "-",
+			"priz": "Çoğu masada mevcut",
+			"wifi": "Mevcut",
+			"wifiHiz": "5-15 Mbps",
+			"gurultu": "2/10",
+			"calismaSaatleri": "09:00 - 22:00",
+			"instagram": "@espressoparktr",
+			"harita": "https://goo.gl/maps/2roAKvfeYGCb2TREA"
+		},
+		{
+			"konum": "İdealtepe",
+			"isim": "NockNock Coffee",
+			"kategoriler": "-",
+			"priz": "Çoğu masada mevcut",
+			"wifi": "Mevcut",
+			"wifiHiz": "10-25 Mbps",
+			"gurultu": "2/10",
+			"calismaSaatleri": "08:00 - 01:00",
+			"instagram": "@nocknockcoffee",
+			"harita": "https://goo.gl/maps/pmkm9sXtV26d5Uxa8"
+		},
+		{
+			"konum": "Kadıköy, Moda",
+			"isim": "Yer",
+			"kategoriler": "-",
+			"priz": "Duvar kenarı masalarda mevcut",
+			"wifi": "Mevcut",
+			"wifiHiz": "50 Mbps",
+			"gurultu": "5/10",
+			"calismaSaatleri": "09:30 - 01:30",
+			"instagram": "@yer_moda",
+			"harita": "https://goo.gl/maps/VHvCtJdu84PHyu3y7"
+		},
+		{
+			"konum": "Kadıköy, Bağdat Caddesi",
+			"isim": "Mikel Coffee",
+			"kategoriler": "Yer",
+			"priz": "Duvar kenarı masalarda mevcut",
+			"wifi": "Mevcut",
+			"wifiHiz": "D:100 Mbps / U:10 Mbps",
+			"gurultu": "3/10",
+			"calismaSaatleri": "07:30 - 23:00",
+			"instagram": "@mikelcoffee_tr",
+			"harita": "https://maps.app.goo.gl/xK7WrTGA4fpPG7An9?g_st=ic"
+		}
+	]
+}

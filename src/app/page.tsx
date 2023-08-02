@@ -37,7 +37,7 @@ const IndexPage = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-4xl text-brown-light mb-4">Çalışma Mekanları</h1>
+      <h1 className="text-4xl text-brown-200 mb-4">Çalışma Mekanları</h1>
       <select
         onChange={handleCityChange}
         className="w-full p-2 mb-4 border border-brown-dark rounded bg-brown-light text-brown-dark"
@@ -52,7 +52,7 @@ const IndexPage = () => {
       </select>
       {selectedCity && (
         <div>
-          <h2 className="text-2xl text-brown-light mb-4">
+          <h2 className="text-2xl text-brown-200 mb-4">
             {selectedCity} şehrindeki çalışma mekanları
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -98,7 +98,7 @@ const IndexPage = () => {
       )}
       <footer className="text-center mt-8 p-4">
   <div className="flex justify-center items-center">
-    <p className="text-brown-light">
+    <p className="text-brown-200">
       Çalışma mekanları reposu:
       <a
         href="https://github.com/acikkaynak/calisma-mekanlari"
@@ -109,7 +109,7 @@ const IndexPage = () => {
         GitHub
       </a>
     </p>
-    <p className="text-brown-light ml-8">
+    <p className="text-brown-200 ml-8">
       Bu sitenin reposu:
       <a
         href="https://github.com/example-user/your-website-repo" // Replace with your website repository URL
@@ -121,7 +121,7 @@ const IndexPage = () => {
       </a>
     </p>
   </div>
-  <p className="text-brown-light mt-2">
+  <p className="text-brown-200 mt-2">
     Made with 🤎 by{' '}
     <a
       href="https://github.com/code-a-man" // Replace with your GitHub profile URL

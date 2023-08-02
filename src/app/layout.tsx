@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="manifest" href="/manifest.json" />
-      <body className={`${inter.className} bg-brown-800`}>{children}</body>
+      <body className={`${inter.className} bg-brown-dark`}>{children}</body>
     </html>
   )
 }

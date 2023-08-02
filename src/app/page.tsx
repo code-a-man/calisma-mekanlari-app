@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from 'react';
 import fetchData from '@/data/fetchData';
-import { MdLocationOn, MdPower, MdWifi, MdSpeed, MdVolumeUp, MdAccessTime, MdPhotoCamera, MdMap } from 'react-icons/md';
-
+import { MdLocationOn, MdPower, MdWifi, MdSpeed, MdVolumeUp, MdAccessTime, MdMap } from 'react-icons/md';
+import { FaInstagram } from 'react-icons/fa';
 interface CityData {
   konum: string;
   isim: string;
@@ -98,12 +98,12 @@ const IndexPage = () => {
                 {venue.instagram && (
                   <p>
                     <div className="flex items-center">
-                      <MdPhotoCamera className="mr-1" /> Instagram:{' '}
+                      <FaInstagram className="mr-1" /> Instagram: {' '}
                       <a
                         href={`https://instagram.com/${venue.instagram.replace('@', '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-brown-darker underline"
+                        className="text-brown-darker underline ml-1"
                       >
                         {venue.instagram}
                       </a>
@@ -118,7 +118,7 @@ const IndexPage = () => {
                         href={venue.harita}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-brown-darker underline"
+                        className="text-brown-darker underline ml-1"
                       >
                         Link
                       </a>

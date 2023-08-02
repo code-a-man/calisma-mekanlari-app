@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import fetchData from '@/data/fetchData';
 import { MdLocationOn, MdPower, MdWifi, MdSpeed, MdVolumeUp, MdAccessTime, MdMap } from 'react-icons/md';
-import { FaInstagram } from 'react-icons/fa';
+import { FaInstagram, FaGithub } from 'react-icons/fa';
 interface CityData {
   konum: string;
   isim: string;
@@ -144,9 +144,9 @@ const IndexPage = () => {
             </a>
           </p>
           <p className="text-brown-darker ml-8">
-            Bu sitenin reposu:
+            Bu sitenin reposu: 
             <a
-              href="https://github.com/example-user/your-website-repo" // Replace with your website repository URL
+              href="https://github.com/code-a-man/calisma-mekanlari-app" // Replace with your website repository URL
               target="_blank"
               rel="noopener noreferrer"
               className="underline ml-2"
@@ -158,12 +158,12 @@ const IndexPage = () => {
         <p className="text-brown-darker mt-2">
           Made with <span role="img" aria-label="heart">🤎</span> by{' '}
           <a
-            href="https://github.com/your-github-username" // Replace with your GitHub profile URL
+            href="https://github.com/code-a-man" // Replace with your GitHub profile URL
             target="_blank"
             rel="noopener noreferrer"
             className="underline"
           >
-            Code A Man
+            Code a Man
           </a>
         </p>
       </footer>

@@ -16,7 +16,7 @@ interface CityData {
 
 
 const IndexPage = () => {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState<Record<string, CityData[]> | null>(null);
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
   useEffect(() => {
     fetchData()
@@ -30,6 +30,7 @@ const IndexPage = () => {
   };
 
   const getVenuesByCity = (city: string) => {
+    if (!data) return [];
     return data[city] || [];
   };
 

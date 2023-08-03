@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useState } from 'react';
 import fetchData from '@/data/fetchData';
-import { MdLocationOn, MdPower, MdWifi, MdSpeed, MdVolumeUp, MdAccessTime, MdMap } from 'react-icons/md';
-import { FaInstagram, FaGithub } from 'react-icons/fa';
+import { MdLocationOn, MdPower, MdWifi, MdSpeed, MdVolumeUp, MdAccessTime, MdMap, MdNotes } from 'react-icons/md';
+import { FaInstagram } from 'react-icons/fa';
+import { BiCoffeeTogo } from 'react-icons/bi';
 interface CityData {
   konum: string;
   isim: string;
@@ -12,8 +13,9 @@ interface CityData {
   wifiHiz: string;
   gurultu: string;
   calismaSaatleri: string;
-  instagram: string;
+  instagram: string | null;
   harita: string | null;
+  notlar: string | null;
 }
 
 
@@ -40,7 +42,7 @@ const IndexPage = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-4xl text-brown-light mb-4">
-        Çalışma Mekanları
+        Çalışma Mekanları <BiCoffeeTogo className="inline-block" />
       </h1>
       <select
         onChange={handleCityChange}
@@ -58,7 +60,7 @@ const IndexPage = () => {
         <div>
           <h2 className="text-2xl text-brown-light mb-4">
             <div className="flex items-center">
-            <MdLocationOn className="mr-1" /> {selectedCity} şehrindeki çalışma mekanları
+              <MdLocationOn className="mr-1" /> {selectedCity} şehrindeki çalışma mekanları
             </div>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -66,62 +68,114 @@ const IndexPage = () => {
               <div key={index} className="p-4 border rounded bg-brown-light text-brown-dark">
                 <strong>{venue.isim}</strong>
                 <p>
-                  <div className="flex items-center">
-                    <MdLocationOn className="mr-1" /> Konum: {venue.konum}
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <MdLocationOn className="mt-1" />
+                    </div>
+                    <div className="ml-1 ">
+                      <span className='font-medium'>Konum: </span> {venue.konum}
+                    </div>
                   </div>
                 </p>
                 <p>
-                  <div className="flex items-center">
-                    <MdPower className="mr-1" /> Priz: {venue.priz}
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <MdPower className="mt-1" />
+                    </div>
+                    <div className="ml-1 ">
+                      <span className='font-medium'>Priz: </span> {venue.priz}
+                    </div>
                   </div>
                 </p>
                 <p>
-                  <div className="flex items-center">
-                    <MdWifi className="mr-1" /> WiFi: {venue.wifi}
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <MdWifi className="mt-1" />
+                    </div>
+                    <div className="ml-1 ">
+                      <span className='font-medium'>WiFi: </span> {venue.wifi}
+                    </div>
                   </div>
                 </p>
                 <p>
-                  <div className="flex items-center">
-                    <MdSpeed className="mr-1" /> WiFi Hızı: {venue.wifiHiz}
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <MdSpeed className="mt-1" />
+                    </div>
+                    <div className="ml-1 ">
+                      <span className='font-medium'>WiFi Hızı: </span> {venue.wifiHiz}
+                    </div>
                   </div>
                 </p>
                 <p>
-                  <div className="flex items-center">
-                    <MdVolumeUp className="mr-1" /> Gürültü Seviyesi: {venue.gurultu}
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <MdVolumeUp className="mt-1" />
+                    </div>
+                    <div className="ml-1 ">
+                      <span className='font-medium'>Gürültü Seviyesi: </span> {venue.gurultu}
+                    </div>
                   </div>
                 </p>
                 <p>
-                  <div className="flex items-center">
-                    <MdAccessTime className="mr-1" /> Çalışma Saatleri: {venue.calismaSaatleri}
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <MdAccessTime className="mt-1" />
+                    </div>
+                    <div className="ml-1 ">
+                      <span className='font-medium'>Çalışma Saatleri: </span> {venue.calismaSaatleri}
+                    </div>
                   </div>
                 </p>
                 {venue.instagram && (
                   <p>
-                    <div className="flex items-center">
-                      <FaInstagram className="mr-1" /> Instagram: {' '}
-                      <a
-                        href={`https://instagram.com/${venue.instagram.replace('@', '')}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-brown-darker underline ml-1"
-                      >
-                        {venue.instagram}
-                      </a>
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <FaInstagram className="mt-1" />
+                      </div>
+                      <div className="ml-1 ">
+                        <span className='font-medium'>Instagram: </span> {' '}
+                        <a
+                          href={`https://instagram.com/${venue.instagram.replace('@', '')}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-brown-darker underline"
+                        >
+                          {venue.instagram}
+                        </a>
+                      </div>
                     </div>
                   </p>
                 )}
                 {venue.harita && (
                   <p>
-                    <div className="flex items-center">
-                      <MdMap className="mr-1" /> Harita:{' '}
-                      <a
-                        href={venue.harita}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-brown-darker underline ml-1"
-                      >
-                        Link
-                      </a>
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <MdMap className="mt-1" />
+                      </div>
+                      <div className="ml-1 ">
+                        <span className='font-medium'>Harita: </span> {' '}
+                        <a
+                          href={venue.harita}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-brown-darker underline"
+                        >
+                          Link
+                        </a>
+                      </div>
+                    </div>
+                  </p>
+                )}
+                {venue.notlar && (
+                  <p>
+                    <div className="flex min-w-min">
+                      <div className="flex-shrink-0">
+                        <MdNotes className="mt-1" />
+                      </div>
+                      <div className="ml-1 ">
+                        <span className='font-medium'>Notlar: </span> {venue.notlar}
+                      </div>
                     </div>
                   </p>
                 )}
@@ -144,7 +198,7 @@ const IndexPage = () => {
             </a>
           </p>
           <p className="text-brown-darker ml-8">
-            Bu sitenin reposu: 
+            Bu sitenin reposu:
             <a
               href="https://github.com/code-a-man/calisma-mekanlari-app" // Replace with your website repository URL
               target="_blank"

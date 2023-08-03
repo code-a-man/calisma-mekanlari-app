@@ -1,4 +1,4 @@
-const url = 'https://raw.githubusercontent.com/acikkaynak/calisma-mekanlari/main/README.md';
+const url = process.env.NODE_ENV === 'development' ? 'https://raw.githubusercontent.com/code-a-man/calisma-mekanlari/dev/README.md' : 'https://raw.githubusercontent.com/acikkaynak/calisma-mekanlari/main/README.md';
 
 interface CityData {
   konum: string;
@@ -32,8 +32,8 @@ async function fetchData() {
       if (cityData) {
         result[cityName] = cityData.map((row) => {
           const rowData = row.split('|').map((item) => item.trim());
-					rowData.shift();
-					rowData.pop();
+          rowData.shift();
+          rowData.pop();
           return {
             konum: rowData[0],
             isim: rowData[1],
@@ -43,13 +43,13 @@ async function fetchData() {
             wifiHiz: rowData[5],
             gurultu: rowData[6],
             calismaSaatleri: rowData[7],
-            instagram: rowData[8] === '-' ? null : rowData[8],
-            harita: rowData[9] === '-' ? null : rowData[9],
+            instagram: rowData[8] === 'N/A' ? null : rowData[8],
+            harita: rowData[9] === 'N/A' ? null : rowData[9].replace(/<|>/g, ''),
+            notlar: rowData[10] === 'N/A' ? null : rowData[10].replace(/<|>/g, ''),
           };
         }).filter((item) => !item.konum.includes('--') && item.konum !== 'Konum');
       }
     }
-
     return result;
   } catch (error: unknown) {
     console.error('Error fetching data:', error);

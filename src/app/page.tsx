@@ -4,23 +4,10 @@ import fetchData from '@/data/fetchData';
 import { MdLocationOn, MdPower, MdWifi, MdSpeed, MdVolumeUp, MdAccessTime, MdMap, MdNotes } from 'react-icons/md';
 import { FaInstagram } from 'react-icons/fa';
 import { BiCoffeeTogo } from 'react-icons/bi';
-interface CityData {
-  konum: string;
-  isim: string;
-  kategoriler: string;
-  priz: string;
-  wifi: string;
-  wifiHiz: string;
-  gurultu: string;
-  calismaSaatleri: string;
-  instagram: string | null;
-  harita: string | null;
-  notlar: string | null;
-}
-
+import type { VenueData } from '@/data/types';
 
 const IndexPage = () => {
-  const [data, setData] = useState<Record<string, CityData[]> | null>(null);
+  const [data, setData] = useState<Record<string, VenueData[]> | null>(null);
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
   useEffect(() => {
     fetchData()

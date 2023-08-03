@@ -1,17 +1,5 @@
 const url = process.env.NODE_ENV === 'development' ? 'https://raw.githubusercontent.com/code-a-man/calisma-mekanlari/dev/README.md' : 'https://raw.githubusercontent.com/acikkaynak/calisma-mekanlari/main/README.md';
-
-interface CityData {
-  konum: string;
-  isim: string;
-  kategoriler: string;
-  priz: string;
-  wifi: string;
-  wifiHiz: string;
-  gurultu: string;
-  calismaSaatleri: string;
-  instagram: string | null;
-  harita: string | null;
-}
+import type { VenueData } from './types';
 
 async function fetchData() {
   try {
@@ -21,7 +9,7 @@ async function fetchData() {
     const regex = /## 📚 (.*?)\n((?:.*\n)+?)(?=(?:## 📚|$))/g;
     let match;
 
-    const result: { [key: string]: CityData[] } = {};
+    const result: { [key: string]: VenueData[] } = {};
 
     while ((match = regex.exec(data)) !== null) {
       const cityName = match[1].trim();

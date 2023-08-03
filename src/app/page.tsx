@@ -48,13 +48,18 @@ const IndexPage = () => {
         onChange={handleCityChange}
         className="w-full p-2 mb-4 border border-brown-dark rounded bg-brown-light text-brown-dark"
       >
-        <option value="">Şehir seçiniz</option>
-        {data &&
-          Object.keys(data).map((city) => (
-            <option key={city} value={city}>
-              {city}
-            </option>
-          ))}
+        {data ? (
+          <>
+            <option value="">Şehir seçiniz</option>
+            {Object.keys(data).map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+          </>
+        ) : (
+          <option value="">Şehirler yükleniyor...</option>
+        )}
       </select>
       {selectedCity && (
         <div>

@@ -198,7 +198,6 @@ const IndexPage = () => {
                           </>
                         ) : (
                           <>
-                            {venue.notlar.substring(0, 19)}...
                             <button
                               className="text-blue-500 underline"
                               onClick={() => toggleExpandedNotes(index)}

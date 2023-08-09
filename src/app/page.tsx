@@ -1,7 +1,7 @@
 "use client";
 import { Fragment, useEffect, useState } from 'react';
 import fetchData from '@/data/fetchData';
-import { MdLocationOn, MdPower, MdWifi, MdSpeed, MdVolumeUp, MdAccessTime, MdMap, MdNotes } from 'react-icons/md';
+import { MdLocationOn, MdPower, MdWifi, MdSpeed, MdVolumeUp, MdAccessTime, MdMap, MdNotes, MdExpandLess, MdExpandMore } from 'react-icons/md';
 import { FaInstagram } from 'react-icons/fa';
 import { BiCoffeeTogo } from 'react-icons/bi';
 import type { VenueData } from '@/data/types';
@@ -25,6 +25,13 @@ const IndexPage = () => {
     if (!data) return [];
     return data[city] || [];
   };
+
+  const [expandedNotes, setExpandedNotes] = useState<number | null>(null);
+
+
+  const toggleExpandedNotes = (venueIndex: number) => (
+    expandedNotes === venueIndex ? setExpandedNotes(null) : setExpandedNotes(venueIndex)
+  );
 
 
   return (
@@ -168,18 +175,38 @@ const IndexPage = () => {
                       <div className="flex-shrink-0">
                         <MdNotes className="mt-1" />
                       </div>
-                      <div className="ml-1 ">
+                      <div className="ml-1">
                         <span className="font-medium">Notlar: </span>
-                        <ReactMarkdown
-                          components={{
-                            p: Fragment,
-                            a: ({ node, ...props }) => (
-                              <a {...props} className="text-brown-darker underline" target="_blank" rel="noopener noreferrer" />
-                            ),
-                          }}
-                        >
-                          {venue.notlar}
-                        </ReactMarkdown>
+                        {expandedNotes === index ? (
+                          <>
+                            <ReactMarkdown
+                              components={{
+                                p: Fragment,
+                                a: ({ node, ...props }) => (
+                                  <a {...props} className="text-brown-darker underline" target="_blank" rel="noopener noreferrer" />
+                                ),
+                              }}
+                            >
+                              {venue.notlar}
+                            </ReactMarkdown>
+                            <button
+                              className="text-blue-500 underline"
+                              onClick={() => toggleExpandedNotes(index)}
+                            >
+                              <MdExpandLess className="mt-1 text-brown-dark font-bold" />
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            {venue.notlar.substring(0, 19)}...
+                            <button
+                              className="text-blue-500 underline"
+                              onClick={() => toggleExpandedNotes(index)}
+                            >
+                              <MdExpandMore className="mt-1 text-brown-dark font-bold" />
+                            </button>
+                          </>
+                        )}
                       </div>
                     </div>
                   </p>

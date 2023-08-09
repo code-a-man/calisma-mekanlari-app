@@ -1,10 +1,11 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import fetchData from '@/data/fetchData';
 import { MdLocationOn, MdPower, MdWifi, MdSpeed, MdVolumeUp, MdAccessTime, MdMap, MdNotes } from 'react-icons/md';
 import { FaInstagram } from 'react-icons/fa';
 import { BiCoffeeTogo } from 'react-icons/bi';
 import type { VenueData } from '@/data/types';
+import ReactMarkdown from 'react-markdown';
 
 const IndexPage = () => {
   const [data, setData] = useState<Record<string, VenueData[]> | null>(null);
@@ -146,15 +147,17 @@ const IndexPage = () => {
                         <MdMap className="mt-1" />
                       </div>
                       <div className="ml-1 ">
-                        <span className='font-medium'>Harita: </span> {' '}
-                        <a
-                          href={venue.harita}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-brown-darker underline"
+                        <span className='font-medium'>Harita: </span>
+                        <ReactMarkdown
+                          components={{
+                            p: Fragment,
+                            a: ({ node, ...props }) => (
+                              <a {...props} className="text-brown-darker underline" target="_blank" rel="noopener noreferrer" />
+                            ),
+                          }}
                         >
-                          Link
-                        </a>
+                          {venue.harita}
+                        </ReactMarkdown>
                       </div>
                     </div>
                   </p>
@@ -166,7 +169,17 @@ const IndexPage = () => {
                         <MdNotes className="mt-1" />
                       </div>
                       <div className="ml-1 ">
-                        <span className='font-medium'>Notlar: </span> {venue.notlar}
+                        <span className="font-medium">Notlar: </span>
+                        <ReactMarkdown
+                          components={{
+                            p: Fragment,
+                            a: ({ node, ...props }) => (
+                              <a {...props} className="text-brown-darker underline" target="_blank" rel="noopener noreferrer" />
+                            ),
+                          }}
+                        >
+                          {venue.notlar}
+                        </ReactMarkdown>
                       </div>
                     </div>
                   </p>

@@ -1,5 +1,13 @@
-const url = process.env.NODE_ENV === 'development' ? 'https://raw.githubusercontent.com/code-a-man/calisma-mekanlari/dev/README.md' : 'https://raw.githubusercontent.com/acikkaynak/calisma-mekanlari/main/README.md';
+const url = process.env.NODE_ENV === 'development' ? 'https://raw.githubusercontent.com/code-a-man/calisma-mekanlari/main/README.md' : 'https://raw.githubusercontent.com/acikkaynak/calisma-mekanlari/main/README.md';
 import type { VenueData } from './types';
+
+
+function convertLinksToMarkdown(text: string) {
+  const linkRegex = /<((?:https?:\/\/)?[^\s]+)>/g;
+  const convertedText = text.replace(linkRegex, (_, url) => `[Link](${url})`);
+  return convertedText;
+}
+
 
 async function fetchData() {
   try {
@@ -32,8 +40,8 @@ async function fetchData() {
             gurultu: rowData[6],
             calismaSaatleri: rowData[7],
             instagram: rowData[8] === 'N/A' ? null : rowData[8],
-            harita: rowData[9] === 'N/A' ? null : rowData[9].replace(/<|>/g, ''),
-            notlar: rowData[10] === 'N/A' ? null : rowData[10].replace(/<|>/g, ''),
+            harita: rowData[9] === 'N/A' ? null : convertLinksToMarkdown(rowData[9]),
+            notlar: rowData[10] === 'N/A' ? null : convertLinksToMarkdown(rowData[10]),
           };
         }).filter((item) => !item.konum.includes('--') && item.konum !== 'Konum');
       }

@@ -1,7 +1,8 @@
-"use client";
-import { Fragment, useEffect, useState } from 'react';
+"use client"
+import { useState, useEffect, Fragment } from 'react';
+import Masonry from 'react-masonry-css';
 import fetchData from '@/data/fetchData';
-import { MdLocationOn, MdPower, MdWifi, MdSpeed, MdVolumeUp, MdAccessTime, MdMap, MdNotes, MdExpandLess, MdExpandMore } from 'react-icons/md';
+import { MdLocationOn, MdPower, MdWifi, MdSpeed, MdVolumeUp, MdAccessTime, MdMap, MdNotes } from 'react-icons/md';
 import { FaInstagram } from 'react-icons/fa';
 import { BiCoffeeTogo } from 'react-icons/bi';
 import type { VenueData } from '@/data/types';
@@ -10,12 +11,13 @@ import ReactMarkdown from 'react-markdown';
 const IndexPage = () => {
   const [data, setData] = useState<Record<string, VenueData[]> | null>(null);
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
+
   useEffect(() => {
-    fetchData()
-      .then((data: any) => {
-        setData(data)
-      })
-  }, [])
+    fetchData().then((data: any) => {
+      setData(data);
+    });
+  }, []);
+
   const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCity = event.target.value;
     setSelectedCity(selectedCity);
@@ -25,14 +27,6 @@ const IndexPage = () => {
     if (!data) return [];
     return data[city] || [];
   };
-
-  const [expandedNotes, setExpandedNotes] = useState<number | null>(null);
-
-
-  const toggleExpandedNotes = (venueIndex: number) => (
-    expandedNotes === venueIndex ? setExpandedNotes(null) : setExpandedNotes(venueIndex)
-  );
-
 
   return (
     <div className="container mx-auto p-4">
@@ -63,9 +57,13 @@ const IndexPage = () => {
               <MdLocationOn className="mr-1" /> {selectedCity} şehrindeki çalışma mekanları
             </div>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Masonry
+            breakpointCols={{ default: 4, 1100: 3, 700: 2, 500: 1 }}
+            className="masonry-grid"
+            columnClassName="masonry-column"
+          >
             {getVenuesByCity(selectedCity).map((venue, index) => (
-              <div key={index} className="p-4 border rounded bg-brown-light text-brown-dark">
+              <div key={index} className="p-4 border rounded bg-brown-light text-brown-dark masonry-grid-item">
                 <strong>{venue.isim}</strong>
                 <p>
                   <div className="flex">
@@ -177,43 +175,24 @@ const IndexPage = () => {
                       </div>
                       <div className="ml-1">
                         <span className="font-medium">Notlar: </span>
-                        {expandedNotes === index ? (
-                          <>
-                            <ReactMarkdown
-                              components={{
-                                p: Fragment,
-                                a: ({ node, ...props }) => (
-                                  <a {...props} className="text-brown-darker underline" target="_blank" rel="noopener noreferrer" />
-                                ),
-                              }}
-                            >
-                              {venue.notlar}
-                            </ReactMarkdown>
-                            <button
-                              className="text-blue-500 underline"
-                              onClick={() => toggleExpandedNotes(index)}
-                            >
-                              <MdExpandLess className="mt-1 text-brown-dark font-bold" />
-                            </button>
-                          </>
-                        ) : (
-                          <>
-                            <button
-                              className="text-blue-500 underline"
-                              onClick={() => toggleExpandedNotes(index)}
-                            >
-                              <MdExpandMore className="mt-1 text-brown-dark font-bold" />
-                            </button>
-                          </>
-                        )}
+                        <ReactMarkdown
+                          components={{
+                            p: Fragment,
+                            a: ({ node, ...props }) => (
+                              <a {...props} className="text-brown-darker underline" target="_blank" rel="noopener noreferrer" />
+                            ),
+                          }}
+                        >
+                          {venue.notlar}
+                        </ReactMarkdown>
                       </div>
                     </div>
                   </p>
                 )}
               </div>
             ))}
+            </Masonry>
           </div>
-        </div>
       )}
       <footer className="bg-brown-light text-center mt-8 p-4 rounded-lg">
         <div className="flex justify-center items-center">
@@ -231,7 +210,7 @@ const IndexPage = () => {
           <p className="text-brown-darker ml-8">
             Bu sitenin reposu:
             <a
-              href="https://github.com/code-a-man/calisma-mekanlari-app" // Replace with your website repository URL
+              href="https://github.com/code-a-man/calisma-mekanlari-app"
               target="_blank"
               rel="noopener noreferrer"
               className="underline ml-2"
@@ -243,7 +222,7 @@ const IndexPage = () => {
         <p className="text-brown-darker mt-2">
           Made with <span role="img" aria-label="heart">🤎</span> by{' '}
           <a
-            href="https://github.com/code-a-man" // Replace with your GitHub profile URL
+            href="https://github.com/code-a-man"
             target="_blank"
             rel="noopener noreferrer"
             className="underline"

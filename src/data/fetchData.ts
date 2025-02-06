@@ -1,4 +1,4 @@
-const url = process.env.NODE_ENV === 'development' ? 'https://raw.githubusercontent.com/code-a-man/calisma-mekanlari/main/README.md' : 'https://raw.githubusercontent.com/acikkaynak/calisma-mekanlari/main/README.md';
+const url = process.env.NODE_ENV === 'development' ? 'https://raw.githubusercontent.com/code-a-man/calisma-mekanlari/main/README.md' : 'https://raw.githubusercontent.com/ramazansancar/acikkaynak_calisma-mekanlari/main/README.md';
 import type { VenueData } from './types';
 
 

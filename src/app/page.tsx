@@ -28,11 +28,9 @@ const IndexPage = () => {
 
   const [expandedNotes, setExpandedNotes] = useState<number | null>(null);
 
-
   const toggleExpandedNotes = (venueIndex: number) => (
     expandedNotes === venueIndex ? setExpandedNotes(null) : setExpandedNotes(venueIndex)
   );
-
 
   return (
     <div className="container mx-auto p-4">
@@ -255,7 +253,5 @@ const IndexPage = () => {
     </div>
   );
 };
-
-
 
 export default IndexPage;

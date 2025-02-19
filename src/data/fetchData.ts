@@ -1,13 +1,16 @@
-const url = process.env.NODE_ENV === 'development' ? 'https://raw.githubusercontent.com/code-a-man/calisma-mekanlari/main/README.md' : 'https://raw.githubusercontent.com/acikkaynak/calisma-mekanlari/main/README.md';
+const url = process.env.NODE_ENV === 'development' ? 'https://raw.githubusercontent.com/code-a-man/calisma-mekanlari/main/README.md' : 'https://raw.githubusercontent.com/ramazansancar/acikkaynak_calisma-mekanlari/main/README.md';
 import type { VenueData } from './types';
 
-
 function convertLinksToMarkdown(text: string) {
-  const linkRegex = /<((?:https?:\/\/)?[^\s]+)>/g;
+  if (!text) return null;
+  const linkRegex = /<((https?:\/\/[^\s]+)>)/g;
   const convertedText = text.replace(linkRegex, (_, url) => `[Link](${url})`);
   return convertedText;
 }
 
+function nullCheck(value: string) {
+  return (value === 'N/A' || value === undefined || value === null || value === "") ? null : value;
+}
 
 async function fetchData() {
   try {
@@ -39,9 +42,9 @@ async function fetchData() {
             wifiHiz: rowData[5],
             gurultu: rowData[6],
             calismaSaatleri: rowData[7],
-            instagram: rowData[8] === 'N/A' ? null : rowData[8],
-            harita: rowData[9] === 'N/A' ? null : convertLinksToMarkdown(rowData[9]),
-            notlar: rowData[10] === 'N/A' ? null : convertLinksToMarkdown(rowData[10]),
+            instagram: nullCheck(rowData[8]) === null ? null : rowData[8],
+            harita: (nullCheck(rowData[9]) === null) ? null : convertLinksToMarkdown(rowData[9]),
+            notlar: (nullCheck(rowData[10]) === null) ? null : convertLinksToMarkdown(rowData[10]),
           };
         }).filter((item) => !item.konum.includes('--') && item.konum !== 'Konum');
       }

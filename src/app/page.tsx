@@ -65,66 +65,88 @@ const IndexPage = () => {
             {getVenuesByCity(selectedCity).map((venue, index) => (
               <div key={index} className="p-4 border rounded bg-brown-light text-brown-dark">
                 <strong>{venue.isim}</strong>
-                <p>
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <MdLocationOn className="mt-1" />
+                {venue.konum && (
+                  <p>
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <MdLocationOn className="mt-1" />
+                      </div>
+                      <div className="ml-1 ">
+                        <span className='font-medium'>Konum: </span> {venue.konum}
+                      </div>
                     </div>
-                    <div className="ml-1 ">
-                      <span className='font-medium'>Konum: </span> {venue.konum}
+                  </p>
+                )}
+                {venue.priz && (
+                  <p>
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <MdPower className="mt-1" />
+                      </div>
+                      <div className="ml-1 ">
+                        <span className='font-medium'>Priz: </span> {venue.priz}
+                      </div>
                     </div>
-                  </div>
-                </p>
-                <p>
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <MdPower className="mt-1" />
+                  </p>
+                )}
+                {venue.wifi && (
+                  <p>
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <MdWifi className="mt-1" />
+                      </div>
+                      <div className="ml-1 ">
+                        <span className='font-medium'>WiFi: </span> {venue.wifi}
+                      </div>
                     </div>
-                    <div className="ml-1 ">
-                      <span className='font-medium'>Priz: </span> {venue.priz}
+                  </p>
+                )}
+                {venue.wifiHiz && (
+                  <p>
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <MdSpeed className="mt-1" />
+                      </div>
+                      <div className="ml-1 ">
+                        <span className='font-medium'>WiFi Hızı: </span>
+                        <ReactMarkdown
+                            components={{
+                              p: Fragment,
+                              a: ({ node, ...props }) => (
+                                <a {...props} className="text-brown-darker underline" target="_blank" rel="noopener noreferrer" />
+                              ),
+                            }}
+                          >
+                          {venue.wifiHiz}
+                        </ReactMarkdown>
+                      </div>
                     </div>
-                  </div>
-                </p>
-                <p>
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <MdWifi className="mt-1" />
+                  </p>
+                )}
+                {venue.gurultu && (
+                  <p>
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <MdVolumeUp className="mt-1" />
+                      </div>
+                      <div className="ml-1 ">
+                        <span className='font-medium'>Gürültü Seviyesi: </span> {venue.gurultu}
+                      </div>
                     </div>
-                    <div className="ml-1 ">
-                      <span className='font-medium'>WiFi: </span> {venue.wifi}
+                  </p>
+                )}
+                {venue.calismaSaatleri && (
+                  <p>
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <MdAccessTime className="mt-1" />
+                      </div>
+                      <div className="ml-1 ">
+                        <span className='font-medium'>Çalışma Saatleri: </span> {venue.calismaSaatleri}
+                      </div>
                     </div>
-                  </div>
-                </p>
-                <p>
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <MdSpeed className="mt-1" />
-                    </div>
-                    <div className="ml-1 ">
-                      <span className='font-medium'>WiFi Hızı: </span> {venue.wifiHiz}
-                    </div>
-                  </div>
-                </p>
-                <p>
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <MdVolumeUp className="mt-1" />
-                    </div>
-                    <div className="ml-1 ">
-                      <span className='font-medium'>Gürültü Seviyesi: </span> {venue.gurultu}
-                    </div>
-                  </div>
-                </p>
-                <p>
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <MdAccessTime className="mt-1" />
-                    </div>
-                    <div className="ml-1 ">
-                      <span className='font-medium'>Çalışma Saatleri: </span> {venue.calismaSaatleri}
-                    </div>
-                  </div>
-                </p>
+                  </p>
+                )}
                 {venue.instagram && (
                   <p>
                     <div className="flex">
@@ -218,7 +240,7 @@ const IndexPage = () => {
           <p className="text-brown-darker">
             Çalışma mekanları reposu:
             <a
-              href="https://github.com/acikkaynak/calisma-mekanlari"
+              href="https://github.com/ramazansancar/acikkaynak_calisma-mekanlari"
               target="_blank"
               rel="noopener noreferrer"
               className="underline ml-2"

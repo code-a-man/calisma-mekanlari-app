@@ -30,7 +30,11 @@ async function fetchData() {
       const cityData = cityDataContent.match(regexCityData);
       if (cityData) {
         result[cityName] = cityData.map((row) => {
-          const rowData = row.split('|').map((item) => item.trim());
+          const rowData = row.split('|').map((item: any) => {
+            item = nullCheck(item.trim());
+            if (item !== null) item = convertLinksToMarkdown(item);
+            return item;
+          });
           rowData.shift();
           rowData.pop();
           return {
@@ -42,9 +46,9 @@ async function fetchData() {
             wifiHiz: rowData[5],
             gurultu: rowData[6],
             calismaSaatleri: rowData[7],
-            instagram: nullCheck(rowData[8]) === null ? null : rowData[8],
-            harita: (nullCheck(rowData[9]) === null) ? null : convertLinksToMarkdown(rowData[9]),
-            notlar: (nullCheck(rowData[10]) === null) ? null : convertLinksToMarkdown(rowData[10]),
+            instagram: rowData[8],
+            harita: rowData[9],
+            notlar: rowData[10],
           };
         }).filter((item) => !item.konum.includes('--') && item.konum !== 'Konum');
       }
